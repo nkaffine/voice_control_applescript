@@ -1,0 +1,211 @@
+-- Any Any str -> Display Dialog or Nothing
+-- If the two values are different, pops up a dialog that says
+-- with the str
+on checkExpect(a1, a2, str)
+	if a1 is not a2 then
+		try
+			display dialog (str & " expected " & a2 & " but got " & a1)
+		on error
+			display dialog str
+		end try
+	end if
+end checkExpect
+
+-- A Song is (title: String, theID: string)
+
+-- String String -> Song
+-- Creates a song with the given name and id
+on makeSong(theName, thisID)
+	return {title:theName, theID:thisID}
+end makeSong
+
+
+-- Defining the list of songs and ids 
+set filePath to "/Users/Nick/Library/Mobile Documents/com~apple~Numbers/Documents/Spreadsheets for Scripts/Song with Song Ids.numbers"
+set theDocument to "Song with Song Ids"
+set listOfSongs to makeListOfSongs(filePath, theDocument)
+#;set listOfSongs to {makeSong("Careless Whispers", "spotify:track:4jDmJ51x1o9NZB5Nxxc7gY"), makeSong("twentyone hundred", "spotify:track:7eKd41R7nInfUmh3iv7JjL"), makeSong("three thousand five", "spotify:track:3Z2sglqDj1rDRMF5x0Sz2R"), makeSong("Pink Toes", "spotify:track:2D5Dd3clzZGTv6H9mtAAQq"), makeSong("Sweatpants", "spotify:track:2rmq49FcJ4U3wh1Z7C9UxE"), makeSong("Telegraph Avenue", "spotify:track:7yCw7WbWOIRYe7z2aRjAaA"), makeSong("Oakland", "spotify:track:7yCw7WbWOIRYe7z2aRjAaA"), makeSong("Telegraph Ave", "spotify:track:7yCw7WbWOIRYe7z2aRjAaA"), makeSong("Thursday in the Danger Room", "spotify:track:7ylaQgNfP9flYRc2sKLPA2"), makeSong("Thieves", "spotify:track:0obTTHbzQm2GmkBOoTQxnK"), makeSong("Lie, Cheat, Steal", "spotify:track:3UN6UkL6M0l8vfZS7OffZ6"), makeSong("Give Me All Your Love", "spotify:track:3Z9LAdAlhMWX6KrWW0DGNp"), makeSong("Perth", "spotify:track:6TVs7Lap6ZcrpZk1xfOgtv"), makeSong("Holoseen", "spotify:track:4fbvXwMTXPWaFyaMWUm9CR"), makeSong("Skinny Love", "spotify:track:2cbic3TiUENlJX91y67ARR"), makeSong("Creature Fear", "spotify:track:7H2zem6ynyk67mqqXDIwDS"), makeSong("Drunk Drivers", "spotify:track:2os0aK782bakCPmjow0SU0"), makeSong("Killer Whales", "spotify:track:2os0aK782bakCPmjow0SU0"), makeSong("Up to the surface", "spotify:track:3BKH4Fpo1os891qyhVkS2r"), makeSong("Enter Entirely", "spotify:track:5b9PdT1iD3rKYkhlIPRCy8"), makeSong("Modern Act", "spotify:track:1PId8NktNh86yXf8wtf8yU"), makeSong("Now Here in", "spotify:track:2gvRINkTkZJcBUufUtvu2k"), makeSong("I'm not part of me", "spotify:track:68rdZO4AcPakdi2zaS7kPI"), makeSong("Solo", "spotify:track:35xSkNIXi504fcEwz9USRB"), makeSong("Pyramids", "spotify:track:4QhWbupniDd44EDtnh2bFJ"), makeSong("Lost", "spotify:track:3GZD6HmiNUhxXYf8Gch723"), makeSong("Bad Religion", "spotify:track:2pMPWE7PJH1PizfgGRMnR9"), makeSong("Pink Matter", "spotify:track:1fOkmYW3ZFkkjIdOZSf596"), makeSong("Forrest Gump", "spotify:track:4YZbVct8l9MnAVIROnLQdx"), makeSong("Ultralight beam", "spotify:track:1eQBEelI2NCy7AUTerX0KS"), makeSong("Famous", "spotify:track:19a3JfW8BQwqHWUMbcqSx8"), makeSong("Black Skinhead", "spotify:track:722tgOgdIbNe3BEyLnejw4"), makeSong("New Slaves", "spotify:track:4cAgkb0ifwn0FSHGXnr4F6"), makeSong("Blood on the leaves", "spotify:track:42GcjriRK6srwHkfbkBqVl"), makeSong("Bound 2", "spotify:track:3sNVsP50132BTNlImLx70i"), makeSong("Power", "spotify:track:2gZUPNdnz5Y45eiGxpHGSc"), makeSong("Devil in a new dress", "spotify:track:1UGD3lW3tDmgZfAVDh6w7r"), makeSong("Diamonds from sierra leone", "spotify:track:2hY2rXKowLQeUBYgPU5oGd"), makeSong("King Kunta", "spotify:track:0N3W5peJUQtI4eyR6GJT5O"), makeSong("Alright", "spotify:track:3iVcZ5G6tvkXZkZKlMpIUs"), makeSong("The Blacker the Berry", "spotify:track:5Mtt6tZSZA9cXTHGSGpyh0"), makeSong("Bitch Don't kill my vibe", "spotify:track:712uvW1Vezq8WpQi38v2L9"), makeSong("Backseat Freestyle", "spotify:track:3aGibUHhQyBsyumYHylw0K"), makeSong("Money Trees", "spotify:track:0AOvNRgl0SMfOibWA5bP8o"), makeSong("Mad City", "spotify:track:2cDCojn6uIBM6A5xTAbl3H"), makeSong("Mr. Brightside", "spotify:track:7oK9VyNzrYvRFo7nQEYkWN"), makeSong("Dance yourself clean", "spotify:track:2cmRpmO04TLaKPzmAzySYZ"), makeSong("Drunk Girls", "spotify:track:0IUAugkLGELvtFJfzPn2vi"), makeSong("Daft punk is playing at my house", "spotify:track:73mlvsfJM2qwlDUJxeaatI"), makeSong("Float On", "spotify:track:2lwwrWVKdf3LR9lbbhnr6R"), makeSong("Hey ya", "spotify:track:2PpruBYCo4H7WOBJ7Q2EwM"), makeSong("Ms. Jackson", "spotify:track:0I3q5fE6wg7LIfHGngUTnV"), makeSong("Trying to be cool", "spotify:track:0djnjvuq3Lg71aZ3UK61D3"), makeSong("Entertainment", "spotify:track:16cITuCC0GPy6Zq1eluYaj"), makeSong("Chloroform", "spotify:track:4VJW5Aj2hBZx95JVi6AzNN"), makeSong("Liztomania", "spotify:track:6ZrlXT6mUMEgomN128iekU"), makeSong("1901", "spotify:track:5JtPGzRgrWxkXX9LoROq3d"), makeSong("Lasso", "spotify:track:7GUVaGNiu11HXN2aqF6Rir"), makeSong("Girlfriend", "spotify:track:3XNXnjEct81xIRjtGPP3NJ")}
+
+
+
+
+-- String String String-> Number
+-- Gets the row count of the given table
+on getRowCount(filePath, theDocument, theTable)
+	tell application "Numbers"
+		open filePath
+		tell document theDocument
+			tell sheet 1
+				tell table theTable
+					get row count
+				end tell
+			end tell
+		end tell
+	end tell
+end getRowCount
+
+
+-- String String String -> any
+-- Gets the value of a cell
+on getCellValue(filePath, theDocument, theTable, theCell)
+	tell application "Numbers"
+		open filePath
+		tell document theDocument
+			tell sheet 1
+				tell table theTable
+					get value of cell theCell
+				end tell
+			end tell
+		end tell
+	end tell
+end getCellValue
+
+-- String String -> [List of Songs]
+-- Makes a list of songs based on a spreadsheet
+on makeListOfSongs(filePath, theDocument)
+	set theList to {}
+	set i to 2
+	set numTimes to (getRowCount(filePath, theDocument, 1) - 1)
+	repeat numTimes times
+		set theName to getCellValue(filePath, theDocument, 1, (("A" & i) as text))
+		if theName is "1901" then
+			set theName to 1901
+		else if theName is "2100" then
+			set theName to 2100
+		end if
+		set theID to getCellValue(filePath, theDocument, 1, (("B" & i) as text))
+		--display dialog theName & theID
+		set theSong to makeSong(theName, theID)
+		set theList to theList & {theSong}
+		set i to i + 1
+	end repeat
+	return theList
+end makeListOfSongs
+
+
+-- String [List-of Song] -> String
+-- Gets the songs id for a song with the title
+checkExpect((getSongID("Telegraph Avenue", listOfSongs)), "spotify:track:7yCw7WbWOIRYe7z2aRjAaA", "Getsongid failed")
+on getSongID(songName, nameDirectory)
+	set i to 1
+	repeat until (songName = (title of (item i of nameDirectory))) or i = (count of nameDirectory)
+		set i to i + 1
+	end repeat
+	return (theID of (item i of nameDirectory))
+end getSongID
+
+-- String [List-of Song] -> Nil
+-- Plays a song that is in a database
+on playSongByName(songName, nameDirectory)
+	set theID to getSongID(songName, nameDirectory)
+	tell application "Spotify"
+		play track theID
+	end tell
+end playSongByName
+
+-- [List-of Song] -> [List-of String]
+-- Creates a list of all the song titles in the database
+on getSongTitles(songList)
+	set theList to {}
+	repeat with i from 1 to count of songList
+		set theSongTitle to (title of item i of songList)
+		set theList to theList & theSongTitle
+	end repeat
+end getSongTitles
+set listOfSongTitles to getSongTitles(listOfSongs)
+
+
+-- String [List-of String] -> [List of String]
+-- appends the string to the beginning of every string in the list
+checkExpect((addStringBefore("hello", {"hello", "dog"})), {"hello hello", "hello dog"}, "addstringbefore failed")
+on addStringBefore(str, los)
+	repeat with i from 1 to count of los
+		set item i of los to ((str & " " & (item i of los)) as string)
+	end repeat
+	return los
+end addStringBefore
+
+-- String [List-of String] -> [List-of String]
+-- appends the string to the end of every string in the list
+checkExpect((addStringAfter("hello", {"hello", "dog"})), {"hello hello", "dog hello"}, "addstringafter failed")
+on addStringAfter(str, los)
+	repeat with i from 1 to count of los
+		set item i of los to (((item i of los) & " " & str) as string)
+	end repeat
+	return los
+end addStringAfter
+
+-- String -> Nil
+-- Executes a command in spotify
+on executeInSpotify(theAction)
+	tell application "Spotify"
+		if theAction is "Pause" then
+			pause
+		else if theAction is "Play" then
+			play
+		else if theAction is "Skip" then
+			next track
+		else if theAction is "Back" then
+			previous track
+		end if
+	end tell
+end executeInSpotify
+
+-- String -> Nil
+-- Runs the command given
+on runCommand(theCommand)
+	say "No Code yet"
+end runCommand
+
+
+set playMusicCommands to addStringBefore("Play", listOfSongTitles)
+
+set musicCommands to (addStringBefore("Tell Spotify to", {"Play", "Pause", "Skip", "Back"}))
+
+set allMusicCommands to musicCommands & playMusicCommands
+
+set essentialCommands to {"Stop Listening"}
+
+set allCommands to addStringBefore("Hey Jarvis", (allMusicCommands & essentialCommands))
+
+set f to "yes"
+repeat while f is "yes"
+	tell application "SpeechRecognitionServer"
+		set theCommand to listen for allCommands
+	end tell
+	set theCommand to ((items 12 thru (count of theCommand) of theCommand) as text)
+	if theCommand is "Stop Listening" then
+		set y to "no"
+		return
+	else if ((items 1 thru 4 of theCommand) as text) = "Play" then
+		set theSongName to (((items 6 thru (count of the theCommand) of theCommand)) as text)
+		playSongByName(theSongName, listOfSongs)
+	else if ((items 1 thru 15 of theCommand) as text) = "Tell Spotify to" then
+		set theAction to ((items 17 thru (count of theCommand) of theCommand) as text)
+		executeInSpotify(theAction)
+	else
+		runCommand(theCommand)
+	end if
+end repeat
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
